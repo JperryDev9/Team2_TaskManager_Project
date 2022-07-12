@@ -1,1 +1,36 @@
+/* Anna's Styling*/
+    /*.breadcrumbs {
+      padding: 10px;
+      font-family: 'Roboto', sen-serif;
+    }
 
+    .breadcrumbs__item {
+      display: inline-block;
+    }
+
+    .breadcrumbs__item:not(:last-of-type)::after {
+      content: '\203a';
+      margin: 0 5px;
+      color: black;
+    }
+
+    .breadcrumbs__link {
+      text-decoration: none;
+      color: black;
+    }
+
+    .breadcrumbs__link {
+      text-decoration: underline;
+    }
+
+    .breadcrumbs__link__active {
+      color: black;
+      font-weight: 500;
+    }
+     .container {
+       background: white;
+       margin: 5px;
+     
+     }
+   
+ */
