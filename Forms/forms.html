@@ -1,0 +1,42 @@
+<!-- INPUT FORMS -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1, shrink to fit=no">
+<!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  </head>
+<body>
+  <!--Title of form-->
+  <h2>New Application</h2>
+  <!--Recruiter Fill in-->
+  <form>
+     <div class="form-group">
+        <label for="recruiter">Recruiter Name:</label><br>
+        <input type="text" id="recruiter" name="recruiter" placeholder=""><br>
+     </div>
+<!--Company Fill in-->
+     <div class="form-group">
+      <label for="company">Company:</label><br>
+      <input type="text" id="company" name="company" placeholder=""><br><br>
+     </div>
+    <!--Job Fill in with date and button -->
+     <div class="form-group">
+      <label for="description">Job Description:</label><br>
+      <textarea class="form-control" id="description" rows="3" placeholder="Enter Job Description or Details"></textarea>
+     </div>
+     <div class="form-group">  
+      <label for="applied">Date Applied:</label>
+      <input type="date" id="start" name="applied" min="2022-01-01" max="2022-12-31">
+   	 </div>
+     <button id="newJobButton" type="submit" class="btn btn-secondary btn-sm">Add Job</button>
+   
+  </form> 
+  <section>
+  </section>
+
+  <p>Adding a task will move the application to the <em>Approved</em> status below. Come back frequently to update your recruitment progress!</p>
+
+</body>
+</html>
