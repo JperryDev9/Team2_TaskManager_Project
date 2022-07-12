@@ -1,5 +1,6 @@
 <!-- INPUT FORMS -->
-<html lang = "en">
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width-device-width, initial-scale=1, shrink to fit=no">
@@ -8,26 +9,25 @@
   </head>
 <body>
   <h2>New Application</h2>
-  <form action="">
+  <form>
      <div class="form-group">
         <label for="recruiter">Recruiter Name:</label><br>
-        <input type="text" id="recruiter" name="recruiter"><br>
+        <input type="text" id="recruiter" name="recruiter" placeholder=""><br>
      </div>
 
      <div class="form-group">
       <label for="company">Company:</label><br>
-      <input type="text" id="company" name="company"><br><br>
+      <input type="text" id="company" name="company" placeholder=""><br><br>
      </div>
      <div class="form-group">
-      <label for="exampleFormControlTextarea1">Job Description:</label><br>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <label for="description">Job Description:</label><br>
+      <textarea class="form-control" id="description" rows="3" placeholder="Enter Job Description or Details"></textarea>
      </div>
-      <input type="submit" value="Add Task"><br>
-    
-   <div class="form-group">  
-    <label for="applied">Date Applied:</label>
-    <input type="date" id="start" name="applied" min="2022-01-01" max="2022-12-31">
-   </div>
+     <div class="form-group">  
+      <label for="applied">Date Applied:</label>
+      <input type="date" id="start" name="applied" min="2022-01-01" max="2022-12-31">
+   	 </div>
+     <button id="newJobButton" type="submit" class="btn btn-secondary btn-sm">Add Job</button>
    
   </form> 
 
