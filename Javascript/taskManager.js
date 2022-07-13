@@ -54,6 +54,17 @@ class TaskManager {
     this.tasks.push(task);
   }
   render() {
+    const tasksHtmlList = [];
+    
+    for (i = 0; i < this.tasks.length; i++) {
+      const tasks = this.tasks[i];
+      const date = newDate(task.dueDate);
+      const formattedDate = date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear();
+      const taskHtml = createTaskHtml(task.name, task.description, task.assignedTo, formattedDate, task.Status);
+        tasksHtmlList.push(taskHtml);
+    }
+      const tasksList = document.querySelector('#tasksList');
+        tasksList.innerHTML = tasksHtml;
   }
 }
 
