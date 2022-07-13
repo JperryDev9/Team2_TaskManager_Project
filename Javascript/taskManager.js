@@ -1,4 +1,4 @@
-document.getElementById("myBtn").addEventListener("click", displayDate);
+document.getElementById("newTaskButton").addEventListener("click", displayDate);
 
 function createTaskHtml(name, description, assignedTo, dueDate, status) {
   const task = {
@@ -36,13 +36,12 @@ function createTaskHtml(name, description, assignedTo, dueDate, status) {
         `;
 }
 
-class taskManager {
+class TaskManager {
   constructor(currentId = 0) {
     this.tasks = [];
     this.currentId = currentId;
-
-    console.log(taskManager);
   }
+  
   addTask(name, description, assignedTo, dueDate) {
     const task = {
       id: this.currentId++,
@@ -53,9 +52,12 @@ class taskManager {
       status: "TODO",
     };
     this.tasks.push(task);
-    console.log(taskManager);
+  }
+  render() {
   }
 }
 
-newTaskVar = new taskManager();
+newTaskVar = new TaskManager();
 newTaskVar.addTask();
+
+
