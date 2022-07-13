@@ -11,23 +11,27 @@
   <h2>New Application</h2>
   <form>
      <div class="form-group">
-        <label for="recruiter">Recruiter Name:</label><br>
-        <input type="text" id="recruiter" name="recruiter" placeholder=""><br>
+        <label for="recruiter">Name:</label><br>
+        <input type="text" id="name" name="recruiter" placeholder=""><br>
      </div>
 
      <div class="form-group">
-      <label for="company">Company:</label><br>
-      <input type="text" id="company" name="company" placeholder=""><br><br>
+      <label for="assignedTo">Assigned To:</label><br>
+      <input type="text" id="assignedTo" name="assignedTo" placeholder=""><br><br>
      </div>
      <div class="form-group">
-      <label for="description">Job Description:</label><br>
+      <label for="description">Description:</label><br>
       <textarea class="form-control" id="description" rows="3" placeholder="Enter Job Description or Details"></textarea>
      </div>
      <div class="form-group">  
-      <label for="applied">Date Applied:</label>
-      <input type="date" id="start" name="applied" min="2022-01-01" max="2022-12-31">
+      <label for="dueDate">Due Date:</label>
+      <input type="date" id="dueDate" name="dueDate" min="2022-01-01" max="2022-12-31">
    	 </div>
-     <button id="newJobButton" type="submit" class="btn btn-secondary btn-sm">Add Job</button>
+      <div class="form-group">  
+      <label for="status">Status:</label>
+      <input type="date" id="status" name="status" min="2022-01-01" max="2022-12-31">
+   	 </div>
+     <button id="newTaskButton" type="submit" class="btn btn-secondary btn-sm">Add Task</button>
    
   </form> 
 
