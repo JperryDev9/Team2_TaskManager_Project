@@ -1,0 +1,43 @@
+HTML:
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript">
+    const upload = () => {
+      const progressBar = document.querySelector('.progress-bar')
+      progressBar.setAttribute('id','play-animation')
+    }
+    FormData.onprogress
+  </script>
+</head>
+
+<body>
+
+  <nav>      
+    <ul>        
+      <li>Applied</li>        
+      <li>Screening</li>       
+      <li>1st Round Interview</li>  
+      <li>2nd Round Interview</li>       
+      <li>Final Decision</li>  
+    </ul>    
+  </nav>
+<br>
+  <div class="container">
+    <div class="progress">
+      <div class="progress-bar" style="width:0%">
+      </div>
+    </div>
+  </div>
+  <br>
+   <button onclick="upload()">Upload</button>
+
+<script src="script.js"></script>
+<script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script> 
+</body>
+</html>

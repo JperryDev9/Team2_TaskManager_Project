@@ -1,0 +1,36 @@
+.container {
+  height: 25px;
+  background-color: lightgray;
+  position: relative;
+  border-radius: 7px;
+}
+.progress-bar {
+  position: absolute;
+  height: 100%;
+  border-radius: 7px;
+  background-color: #89d100;
+  text-align: center;
+}
+
+#play-animation {
+  animation: progress-animation 5s forwards;
+}
+@keyframes progress-animation {
+  0% {width: 0%;}
+  100% {width: 100%;}
+}
+
+
+nav ul {  
+  list-style-type: none;  
+  margin: 0; 
+  padding: 0;  
+  border: 1px solid lightgray;
+  overflow: hidden;  
+  background-color: #d9ec37;  
+  display: table;  
+  width: 100%;
+}
+ nav li {  
+   display: table-cell
+ }
