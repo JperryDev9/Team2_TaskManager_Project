@@ -1,3 +1,9 @@
+const taskManager = new TaskManager(0);
+taskManager.load();
+
+taskManager.render();
+
+
 taskHtml = createTaskHtml(
   "Generation",
   "web developer",
