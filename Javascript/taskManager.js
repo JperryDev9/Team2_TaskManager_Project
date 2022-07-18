@@ -1,5 +1,12 @@
 document.getElementById("myBtn").addEventListener("click", displayDate);
 
+const upload = () => {
+      const progressBar = document.querySelector('.progress-bar')
+      progressBar.setAttribute('id','play-animation')
+    }
+//what is this doing? please elaborate?
+    //FormData.onprogress
+
 
 function createTaskHtml (id, name, description, assignedTo, dueDate, status)  {
     const task = {
