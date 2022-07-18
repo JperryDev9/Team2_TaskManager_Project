@@ -1,6 +1,7 @@
 document.getElementById("myBtn").addEventListener("click", displayDate);
 
-function createTaskHtml (name, description, assignedTo, dueDate, status) {
+
+function createTaskHtml (id, name, description, assignedTo, dueDate, status)  {
     const task = {
         // Increment the currentId property
         id: this.currentId++,
@@ -11,7 +12,7 @@ function createTaskHtml (name, description, assignedTo, dueDate, status) {
         status: 'TODO'
     }
         const html = ` 
-        <div class="card" style="width: 18rem";>
+        <div class="card data-task-id=${id}" style="width: 18rem";>
            <div class="card-body">
             <h5 class="card-title">${name}</h5>
             <p class="card-text">${description}</p>
@@ -68,7 +69,7 @@ class taskManager {
             const task = this.tasks[i]
             const date = new Date(task.dueDate);
             const formattedDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-            const taskHtml = createTaskHtml(task.name, task.description, task.assignedTo, formattedDate, task.status);
+            const taskHtml = createTaskHtml(task.id, task.name, task.description, task.assignedTo, formattedDate, task.status);
             tasksHtmlList.push(taskHtml)
            }
 
@@ -77,6 +78,22 @@ class taskManager {
            const tasksList = document.querySelector('#tasksList');
            tasksList.innerHTML = tasksHtml;
         }
+    
+    
+getTaskById(taskId) {
+    let foundTask;
+
+    for (let i = 0; i < this.tasks.length; i++) {
+        const task = this.tasks[i];
+        if (task.id === taskId) {
+        foundTask = task;
+        }
+    }
+
+
+    return foundTask;
+}
+
 
         
 };
