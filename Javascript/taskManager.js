@@ -1,132 +1,119 @@
-document.getElementById("myBtn").addEventListener("click", displayDate);
+window.addEventListener("load", () => {
+  newTask = JSON.parse(localStorage.getItem("newTask")) || [];
+  //The above targets the name of the todo list, saying that when it loads
+  //it will stay the same.
 
-const upload = () => {
-      const progressBar = document.querySelector('.progress-bar')
-      progressBar.setAttribute('id','play-animation')
+  const nameInput = document.querySelector("#name");
+  const newTaskForm = document.querySelector("#newTaskForm");
+
+  const username = localStorage.getItem("username") || "";
+  //these are variables targeting the form  Name head
+  nameInput.value = username;
+  nameInput.addEventListener("change", (e) => {
+    localStorage.setItem("username", e.target.value);
+    //This keeps the change of the Task list "let's get it together personal input"
+  });
+  //This part is targets how the form is saved to local after filled out
+  newTaskForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const newTask = {
+      /*formContent*/ newTaskNameInput: e.target.elements.formContent.value,
+      /*category*/ newTaskDescription: e.target.elements.category.value,
+      done: false,
+      createdAt: new Date().getTime(),
+    };
+    newTask.push(newTask); // <<<This is showing an error in DeveloperTools. Uncaught TypeError: newTask.push is not a function.
+    //but on line# 20 it was declared.
+    localStorage.setItem("newTask", JSON.stringify(newTask));
+    //Stores to local storage
+    e.target.reset();
+    //Once we ticked down what we have it will reset
+    DisplayNewTask();
+  });
+});
+// this is going to be how it is going to display, using a global var. calling as soon as our page is loaded.
+function DisplayNewTask() {
+  const newTaskList = document.querySelector("#newTaskForm");
+
+  newTaskForm.innerHTML = "";
+
+  newTask.array.forEach((newTask) => {
+    const newTaskItem = document.createElement("label", "div");
+    newTaskItem.classList.add("newTask");
+
+    const label = document.createElement("label");
+    const input = document.createElement("input");
+    const span = document.createElement("span");
+    const formContent = document.createElement("div");
+    const actions = document.createElement("div");
+    const edit = document.createElement("button");
+    const deleteButton = document.createElement("button");
+
+    input.type = "checkbox";
+    input.checked = newTask.done;
+    span.classList.add("bubble");
+
+    if (newTask.category == "personal") {
+      span.classList.add("personal");
+    } else {
+      span.classList.add("business");
     }
-//what is this doing? please elaborate?
-    //FormData.onprogress
 
+    formContent.classList.add("newTaskContent");
+    actions.classList.add("actions");
+    edit.classList.add("edit");
+    deleteButton.classList.add("delete");
 
-function createTaskHtml (id, name, description, assignedTo, dueDate, status)  {
-    const task = {
-        // Increment the currentId property
-        id: this.currentId++,
-        name: name,
-        description: description,
-        assignedTo: assignedTo,
-        dueDate: dueDate,
-        status: 'TODO'
+    formContent.innerHTML =
+      '<input type="text" value="${newTask.Content}" readonly>';
+    edit.innerHTML = "Edit";
+    deleteButton.innerHTML = "Delete";
+
+    label.appendChild(input);
+    label.appendChild(span);
+    actions.appendChild(edit);
+    actions.appendChild(deleteButton);
+    newTaskItem.appendChild(label);
+    newTaskItem.appendChild(formContent);
+    newTaskItem.appendChild(actions);
+
+    //need to work out kinks of below code 45:28
+    /*todoList.appendChild(todoItem);
+
+    if (todo.done) {
+      todoItem.classList.add("done");
     }
-        const html = ` 
-        <div class="card data-task-id=${id}" style="width: 18rem";>
-           <div class="card-body">
-            <h5 class="card-title">${name}</h5>
-            <p class="card-text">${description}</p>
-            <p class="card-text">
-              <p class="card-text">
-              <div class="dropdown">
-                  ${status}
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Done</a>
-                      <a class="dropdown-item" href="#">Stuck</a>
-                      <a class="dropdown-item" href="#">In progress</a>
-                  </div>
-              </div>
-           </p>
-            </p>
-            <p class="card-text">Assigned to: ${assignedTo}</p>
-            <p class="card-text">Due to: ${dueDate}</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            <a href="#" class="btn btn-success">Button</a>
-          </div>
-        </div>
-        `
-     }; 
-    
 
+    input.addEventListener("change", (e) => {
+      todo.done = e.target.checked;
+      localStorage.setItem("todos", JSON.stringify(todos));
 
+      if (todo.done) {
+        todoItem.classList.add("done");
+      } else {
+        todoItem.classList.remove("done");
+      }
 
+      DisplayTodos();
+    });
 
+    edit.addEventListener("click", (e) => {
+      const input = content.querySelector("input");
+      input.removeAttribute("readonly");
+      input.focus();
+      input.addEventListener("blur", (e) => {
+        input.setAttribute("readonly", true);
+        todo.content = e.target.value;
+        localStorage.setItem("todos", JSON.stringify(todos));
+        DisplayTodos();
+      });
+    });
 
-
-class taskManager {
-  constructor(currentId = 0) {
-        this.tasks = [];
-        this.currentId = currentId;
-        
-        console.log(taskManager);
-    }
-    addTask(name, description, assignedTo, dueDate) {
-        const task = {
-            id: this.currentId++,
-            name: name,
-            description: description,
-            assignedTo: assignedTo,
-            dueDate: dueDate,
-            status: 'TODO'
-        };
-       this.tasks.push(task);
-       console.log(taskManager);
-    }
- 
-    render() {
-      const tasksHtmlList = []
-           for (let i = 0; i < this.tasks.length; i++) {
-            const task = this.tasks[i]
-            const date = new Date(task.dueDate);
-            const formattedDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-            const taskHtml = createTaskHtml(task.id, task.name, task.description, task.assignedTo, formattedDate, task.status);
-            tasksHtmlList.push(taskHtml)
-           }
-
-           const tasksHtml = tasksHtmlList.join('\n');
-
-           const tasksList = document.querySelector('#tasksList');
-           tasksList.innerHTML = tasksHtml;
-        }
-    
-     save() {
-      const tasksJson = JSON.stringify(this.tasks);
-        localStorage.setItem('tasks', tasksJson);
-         const currentId = String(this.currentId);
-       localStorage.setItem('currentId', currentId);
-    }
-    
-      load() {
-        if (localStorage.getItem('tasks')) {
-       const tasksJson = localStorage.getItem('tasks');
-         this.tasks = JSON.parse(tasksJson);
-        }
-        if (localStorage.getItem('currentId')) {
-           const currentId = localStorage.getItem('currentId');
-            this.currentId = Number(currentId);
-        }
-    }
+    deleteButton.addEventListener("click", (e) => {
+      todos = todos.filter((t) => t != todo);
+      localStorage.setItem("todos", JSON.stringify(todos));
+      DisplayTodos();
+    }); */
+  });
 }
-    
-    
-getTaskById(taskId) {
-    let foundTask;
-
-    for (let i = 0; i < this.tasks.length; i++) {
-        const task = this.tasks[i];
-        if (task.id === taskId) {
-        foundTask = task;
-        }
-    }
-
-
-    return foundTask;
-}
-
-
-        
-};
-
-
-
-   
-    
-    newTaskVar = new taskManager();
-    newTaskVar.addTask();
